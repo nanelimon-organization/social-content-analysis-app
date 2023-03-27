@@ -1,72 +1,47 @@
-{% extends "layout.html" %}
-
-{% block title %}homepage{% endblock %}
-
-{% block content %}
-
-    <h1>#HASHTAG</h1>
-
-    <div class="row">
-        <div class="col-12">
-            <div class="card border-dark mb-3" style="height: 20rem;">
-              <div class="card-header bg-transparent border-dark"><i class="fa-brands fa-apple"></i> {{ text }}</div>
-              <div class="card-body text-dark">
-                <h5 class="card-title">OTHER -</h5> <span><a href="#">https://twitter.com/tweet_url76ycıasghhsa </a></span>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content
-                    ome quick example text to build on the card title and make up the bulk of the card's content.on the
-                    on the card title and make up the bulk of the card's content. card title and make up the bulk of the card's content.</p>
+{% extends "layout.html" %} {% block title %}homepage{% endblock %} {% block content %} <h1>#HASHTAG</h1>
+<div class="row">
+  <div class="col-6">
+    <div class="container">
+      <section class="mx-auto my-5">
+        <div class="card">
+          <div class="card-body text-danger" style="height: 25rem;">
+            <blockquote class="blockquote blockquote-custom bg-white px-3 pt-4">
+              <div class="blockquote-custom-icon bg-info shadow-1-strong">
+                <i class="fa fa-quote-left text-white"></i>
               </div>
-              <div class="card-footer bg-transparent border-dark">{{ tarih }}</div>
-            </div>
+              <h5 class="card-title">SEXIST - OFFENSIVE</h5>
+              <p class="mb-0 mt-2 font-italic">
+                <span class="badge rounded-pill bg-info text-dark">kadın </span> bir yöneticinin <span class="badge rounded-pill bg-info text-dark">altında </span> çalışmak <span class="badge rounded-pill bg-info text-dark">erkeğe </span> yakışır mı? <a href="#" class="text-info">{{ username }}</a>."
+              </p>
+              <footer class="blockquote-footer pt-4 mt-4 border-top">
+                {{ publish_date }}
+                <cite title="Source Title">Twitter for Android</cite> - <span title="Source Title"> Hatay/Antakya</span> {% for i in hashtags %} <span class="badge rounded-pill bg-warning text-dark">#{{ i }} </span> {% endfor %}
+              </footer>
+            </blockquote>
+          </div>
         </div>
+      </section>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card border-danger mb-3" style="height: 20rem;">
-              <div class="card-header bg-transparent border-danger"><i class="fa-brands fa-android"></i> {{ text }}jashgdjashgdjhasgh</div>
-              <div class="card-body text-danger">
-                <h5 class="card-title">SEXIST - </h5> <span><a href="#">https://twitter.com/tweet_url76ycıasghhsa </a></span>
-                <p class="card-text"><span class="badge rounded-pill bg-info text-dark">kadın </span>bir yöneticinin <span class="badge rounded-pill bg-info text-dark">altında </span> çalışmak <span class="badge rounded-pill bg-info text-dark">erkeğe </span> yakışır mı</p>
+  </div>
+  <div class="col-6">
+    <div class="container">
+      <section class="mx-auto my-5">
+        <div class="card">
+          <div class="card-body" style="height: 25rem;">
+            <blockquote class="blockquote blockquote-custom bg-white px-3 pt-4">
+              <div class="blockquote-custom-icon bg-info shadow-1-strong">
+                <i class="fa fa-quote-left text-white"></i>
               </div>
-              <div class="card-footer bg-transparent border-danger">{{ tarih }}</div>
-            </div>
+              <h5 class="card-title">OTHER - INOFFENSIVE</h5>
+              <p class="mb-0 mt-2 font-italic"> "İnsan işte kuş misali kardeşim uçup gidiyor oradan oraya.. Sahi sende öyleydin ya gençken ne maceralara koşardık şehir şehir <a href="#" class="text-info">{{ username }}</a>." </p>
+              <footer class="blockquote-footer pt-4 mt-4 border-top">
+                {{ publish_date }}
+                <cite title="Source Title"> Twitter for iPhone</cite> - <span title="Source Title"> Hatay/Antakya</span> {% for i in hashtags %} <span class="badge rounded-pill bg-warning text-dark">#{{ i }} </span> {% endfor %}
+              </footer>
+            </blockquote>
+          </div>
         </div>
+      </section>
     </div>
-    <div class="row">
-        <div class="col-12">
-                <div class="card border-danger mb-3" style="height: 20rem;">
-                  <div class="card-header bg-transparent border-danger"><i class="fa-brands fa-apple"></i> {{ text }}</div>
-                  <div class="card-body text-danger">
-                    <h5 class="card-title">INSULT - </h5> <span><a href="#">https://twitter.com/tweet_url76ycıasghhsa </a></span>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                  <div class="card-footer bg-transparent border-danger">{{ tarih }}</div>
-                </div>
-            </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card border-danger mb-3" style="height: 20rem;">
-              <div class="card-header bg-transparent border-danger"><i class="fa-brands fa-apple"></i> {{ text }}</div>
-              <div class="card-body text-danger">
-                <h5 class="card-title">RACIST - </h5> <span><a href="#">https://twitter.com/tweet_url76ycıasghhsa </a></span>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <div class="card-footer bg-transparent border-danger">{{ tarih }}</div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="card border-danger mb-3" style="height: 20rem;">
-              <div class="card-header bg-transparent border-danger"><i class="fa-brands fa-apple"></i> {{ text }}</div>
-              <div class="card-body text-danger">
-                <h5 class="card-title">PROFANITY - </h5> <span><a href="#">https://twitter.com/tweet_url76ycıasghhsa </a></span>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <div class="card-footer bg-transparent border-danger">{{ tarih }}</div>
-            </div>
-        </div>
-    </div>
-
-{% endblock %}
+  </div>
+</div> {% endblock %}
