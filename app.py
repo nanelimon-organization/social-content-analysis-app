@@ -1,18 +1,31 @@
 from flask import Flask
-from flask import render_template
-import datetime
+from flask_session import Session
+from flask_sqlalchemy import SQLAlchemy
+from views.unsolicited_content_analysis import uns_cont_alys
+from views import unsolicited_content_analysis
+from decouple import config
 
 app = Flask(__name__)
 
+# Load environment variables
+db_user = config('USERNAME')
+db_pass = config('PASSWORD')
+db_host = config('HOST')
+db_port = config('PORT')
+db_name = config('DATABASE')
 
-@app.route('/', methods=['GET'])
-def index():
-    hashtags= ['turkcell', 'turktelekom']
-    username='@KullanıcıAdı'
-    publish_date= '2023-03-26T21:18:11+00:00'
+# Set SQLAlchemy config
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#app.config['SESSION_TYPE'] = 'filesystem'
+#Session(app)
 
-    return render_template('index.html', hashtags=hashtags, tarih=datetime.date.today(), username=username,publish_date=publish_date)
+# Initialize SQLAlchemy instance
+db = SQLAlchemy(app)
 
+app.register_blueprint(uns_cont_alys)
+app.secret_key = b'acikhack2023tddi'
 
 if __name__ == '__main__':
-    app.run(port=8000)
+    db.create_all()
+    app.run(debug=True)
