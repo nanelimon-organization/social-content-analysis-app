@@ -55,7 +55,7 @@ touch .env
 * PORT=5432
 ```
 
-## Run Job
+## Run App
 
 ```bash
 python app.py
