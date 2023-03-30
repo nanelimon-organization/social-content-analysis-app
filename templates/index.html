@@ -1,10 +1,10 @@
-{% extends "layout.html" %} {% block title %}homepage{% endblock %} {% block content %} <h1>#HASHTAG</h1>
+{% extends "layout.html" %} {% block title %}homepage{% endblock %} {% block content %}
 <div class="row">
-  <div class="col-6">
+  <div class="col-12">
     <div class="container">
       <section class="mx-auto my-5">
         <div class="card">
-          <div class="card-body text-danger" style="height: 25rem;">
+          <div class="card-body text-danger">
             <blockquote class="blockquote blockquote-custom bg-white px-3 pt-4">
               <div class="blockquote-custom-icon bg-info shadow-1-strong">
                 <i class="fa fa-quote-left text-white"></i>
@@ -23,20 +23,22 @@
       </section>
     </div>
   </div>
-  <div class="col-6">
+
+{% for tweet in tweets %}
+<div class="col-12">
     <div class="container">
       <section class="mx-auto my-5">
         <div class="card">
-          <div class="card-body" style="height: 25rem;">
+          <div class="card-body">
             <blockquote class="blockquote blockquote-custom bg-white px-3 pt-4">
               <div class="blockquote-custom-icon bg-info shadow-1-strong">
                 <i class="fa fa-quote-left text-white"></i>
               </div>
               <h5 class="card-title">OTHER - INOFFENSIVE</h5>
-              <p class="mb-0 mt-2 font-italic"> "İnsan işte kuş misali kardeşim uçup gidiyor oradan oraya.. Sahi sende öyleydin ya gençken ne maceralara koşardık şehir şehir <a href="#" class="text-info">{{ username }}</a>." </p>
+              <p class="mb-0 mt-2 font-italic"> {{ tweet.content }} <a href="#" class="text-info">{{ tweet.username }}</a>." </p>
               <footer class="blockquote-footer pt-4 mt-4 border-top">
-                {{ publish_date }}
-                <cite title="Source Title"> Twitter for iPhone</cite> - <span title="Source Title"> Hatay/Antakya</span> {% for i in hashtags %} <span class="badge rounded-pill bg-warning text-dark">#{{ i }} </span> {% endfor %}
+                {{ tweet.publish_date }}
+                <cite title="Source Title"> {{ tweet.device }}</cite> - <span title="Source Title">{{ tweet.user_location if tweet.user_location != '' else 'Ankara, Türkiye' }}</span> {% for i in tweet.hashtags.strip('{').strip('}').split(',') %} <span class="badge rounded-pill bg-warning text-dark">#{{ i }} </span> {% endfor %}
               </footer>
             </blockquote>
           </div>
@@ -44,4 +46,5 @@
       </section>
     </div>
   </div>
+{% endfor %}
 </div> {% endblock %}
