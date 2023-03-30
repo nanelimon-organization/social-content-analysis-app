@@ -17,11 +17,11 @@ db = SQLAlchemy()
 def index():
     tweets = Tweet.query.all()
     print(tweets)
-    """tweets = unsolicited_content_analysis.get_all_tweets()
+    tweets = unsolicited_content_analysis.get_all_tweets()
     for tweet in tweets:
         print(tweet.id)
         print(tweet.device)
-        print(tweet.tweet_url)"""
+        print(tweet.tweet_url)
 
     hashtags= ['turkcell', 'turktelekom']
     username='@KullanıcıAdı'
