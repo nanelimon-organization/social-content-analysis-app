@@ -1,49 +1,51 @@
-# Social Content Analysis Application
+# Sosyal İçerik Analizi Uygulaması
 
-It is an application that instantly displays the discussions on social media about a topic (hashtag) and determines whether these discussions contain insults in various categories, and if it does, it shows which words of the text are evaluated in that insult category.
+Bu, bir konu (hashtag) hakkındaki sosyal medya tartışmalarını anında görüntüleyen ve bu tartışmaların çeşitli kategorilerde hakaret içerip içermediğini belirleyen ve eğer içeriyorsa, metnin hangi kelimelerinin o hakaret kategorisinde değerlendirildiğini gösteren bir uygulamadır.
 
-## Technologies
+## Kullanılan Teknolojiler
 
-The main technologies are:
+Ana teknolojiler:
 
-- [PostgreSQL](https://www.postgresql.org/) - RDBMS database
-- [Python](https://docs.python.org/3.10/) - Python version: 3.10 
-- [SQLAlchemy](https://docs.sqlalchemy.org/) - SQLAlchemy version: 2.0
-- [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) - Bootstrap version: 5.0
+- [PostgreSQL](https://www.postgresql.org/) - RDBMS veritabanı
+- [Python](https://docs.python.org/3.10/) - Python sürümü: 3.10 
+- [SQLAlchemy](https://docs.sqlalchemy.org/) - SQLAlchemy sürümü: 2.0
+- [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) - Bootstrap sürümü: 5.0
 
-## Prerequisites
 
-### Environment
+## Gereksinimler
 
-Please set up your Python version to `3.10`
+### Ortam
+
+Lütfen Python sürümünüzü `3.10` olarak ayarlayın:
 
 ```bash
 python --version
 ```
-- Install Virtualenviroment
+
+- Virtualenv kurulumu:
 ```bash
 pip install virtualenv
 ```
-- Create the virtualenv
+- Virtualenv oluşturma:
 ```bash
 virtualenv venv
 ```
-- Activate the venv
+- Virtualenv'i aktif hale getirme:
 ```bash
 source venv/bin/activate
 ```
-- Install libraries
+- Kütüphanelerin kurulumu:
 ```bash
 pip install -r requirements.txt
 ```
 
-### Configuration
+### Konfigürasyon
 
-Create your `.env` file.
+`.env` dosyanızı oluşturun.
 ```bash
 cd <project-directory>
 
-touch .env
+touch .env dosyasına ortam değişkenleri ekleyin.
 ```
 - Add environment variables into `.env` file
 ```bash
@@ -55,7 +57,7 @@ touch .env
 * PORT=5432
 ```
 
-## Run App
+## Uygulamayı Çalıştırma
 
 ```bash
 python app.py
