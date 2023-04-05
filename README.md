@@ -74,7 +74,9 @@ Uygulama, popüler sosyal medya platformu Twitter üzerinden belirli bir hashtag
 
 Uygulama için planlanan başlıca analitik modüller şunlardır:
 
-İstenmeyen İçerik Analizi: Bu modül, kötü anlam taşıyan veya saldırgan içerikleri tespit ederek, sosyal medya yöneticilerine iletişim stratejilerini optimize etme imkanı sağlar. " is_offensive " fonksiyonu sayesinde, anlık olarak etiketlenmiş içeriklerin hangi kategoriye ait olduğunu belirler ve beş farklı etiket sunar. Bu modülde, gelişmiş doğal dil işleme teknikleri ve BERT tabanlı modeller kullanılır.
+İstenmeyen İçerik Analizi: Bu modül, kötü anlam taşıyan veya saldırgan içerikleri tespit ederek, sosyal medya yöneticilerine iletişim stratejilerini optimize etme imkanı sağlar. Kullanılan model, beş farklı kategoriye ayrıştırarak Türkçe metinleri sınıflandırmak için eğitilmiştir. Bu kategoriler INSULT (HAKARET), OTHER (DİĞER), PROFANITY (KÜFÜR), RACIST (IRKÇI) ve SEXIST (CİNSİYETÇİ) olarak tanımlanmıştır. Modelin performansı, precision, recall ve F1-score gibi metrikler kullanılarak değerlendirilmiştir.
+
+" is_offensive " fonksiyonu sayesinde, anlık olarak etiketlenmiş içeriklerin hangi kategoriye ait olduğunu belirler ve beş farklı etiket sunar. Bu modülde, gelişmiş doğal dil işleme teknikleri ve BERT tabanlı modeller kullanılır.
 
 Rakip Analizi: Kullanıcılar için rakip markaların ve kişilerin sosyal medya performansını ve etkileşimlerini analiz eder. Bu sayede, sektördeki duruşlarını güçlendirmelerine destek olur. Rakip analizi, gelişmiş metrikler ve sosyal medya analitiği araçları kullanarak gerçekleştirilir.
 
