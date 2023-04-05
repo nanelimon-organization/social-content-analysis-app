@@ -1,9 +1,7 @@
-from flask import render_template, jsonify, redirect, Blueprint, flash
-import pytz
-from datetime import datetime
+import json
+import requests
+from flask import render_template, Blueprint
 from flask_sqlalchemy import SQLAlchemy
-
-from models.twitter import Tweet
 from controller import unsolicited_content_analysis
 
 uns_cont_alys = Blueprint('uns_cont_alys', __name__,
@@ -15,24 +13,20 @@ db = SQLAlchemy()
 
 @uns_cont_alys.route('/', methods=['GET'])
 def index():
-
     tweets = unsolicited_content_analysis.get_all_tweets()
-
-    local_tz = pytz.timezone('Europe/Istanbul')  # yerel zaman dilimi olarak burada İstanbul kullanıldı
-
     sorted_tweets = sorted(tweets, key=lambda x: x.id, reverse=True)
 
-    for tweet in sorted_tweets:
-        print(tweet.id)
-        print(tweet.device)
-        print(tweet.tweet_url)
-        print(tweet.publish_date)
-        print(tweet.user_location)
+    contents = [i.content for i in sorted_tweets]
+    predict = model_sequence(tweets=contents)
+
+    return render_template('index.html', tweets=sorted_tweets, predict=predict)
 
 
-    hashtags= ['turkcell', 'turktelekom']
-    username='@KullanıcıAdı'
-    publish_date= '2023-03-26T21:18:11+00:00'
+def model_sequence(tweets):
 
-    return render_template('index.html', hashtags=hashtags,
-                           username=username,publish_date=publish_date, tweets=sorted_tweets)
+    api_url = "http://127.0.0.1:5001/multilabel-prediction"
+    items = json.dumps({"texts": tweets})
+    response = requests.post(api_url, items)
+    results = response.json()["result"]["model"]
+
+    return results

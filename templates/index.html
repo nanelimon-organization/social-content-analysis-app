@@ -1,30 +1,9 @@
-{% extends "layout.html" %} {% block title %}homepage{% endblock %} {% block content %}
-<div class="row">
-  <div class="col-12">
-    <div class="container">
-      <section class="mx-auto my-5">
-        <div class="card">
-          <div class="card-body text-danger">
-            <blockquote class="blockquote blockquote-custom bg-white px-3 pt-4">
-              <div class="blockquote-custom-icon bg-info shadow-1-strong">
-                <i class="fa fa-quote-left text-white"></i>
-              </div>
-              <h5 class="card-title">SEXIST - OFFENSIVE</h5>
-              <p class="mb-0 mt-2 font-italic">
-                <span class="badge rounded-pill bg-info text-dark">kadın </span> bir yöneticinin <span class="badge rounded-pill bg-info text-dark">altında </span> çalışmak <span class="badge rounded-pill bg-info text-dark">erkeğe </span> yakışır mı? <a href="#" class="text-info">{{ username }}</a>."
-              </p>
-              <footer class="blockquote-footer pt-4 mt-4 border-top">
-                {{ publish_date }}
-                <cite title="Source Title">Twitter for Android</cite> - <span title="Source Title"> Hatay/Antakya</span> {% for i in hashtags %} <span class="badge rounded-pill bg-warning text-dark">#{{ i }} </span> {% endfor %}
-              </footer>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+{% extends "layout.html" %}
+{% block title %}homepage{% endblock %}
+{% block content %}
+<div class="row" id="tweets-container">
 
-{% for tweet in tweets %}
+{% for i in range(tweets|length) %}
 <div class="col-12">
     <div class="container">
       <section class="mx-auto my-5">
@@ -34,11 +13,15 @@
               <div class="blockquote-custom-icon bg-info shadow-1-strong">
                 <i class="fa fa-quote-left text-white"></i>
               </div>
-              <h5 class="card-title">OTHER - INOFFENSIVE</h5>
-              <p class="mb-0 mt-2 font-italic"> {{ tweet.content }} <a href="#" class="text-info">{{ tweet.username }}</a>." </p>
+              {% if predict[i].is_offensive == 1  %}
+              <h5 class="card-title text-bg-danger">{{ predict[i].prediction }}</h5>
+              {% else %}
+              <h5 class="card-title">{{ predict[i].prediction }}</h5>
+            {% endif %}
+              <p class="mb-0 mt-2 font-italic"> {{ tweets[i].content }} <a href="#" class="text-info">{{ tweets[i].username }}</a>." </p>
               <footer class="blockquote-footer pt-4 mt-4 border-top">
-                {{ tweet.publish_date }}
-                <cite title="Source Title"> {{ tweet.device }}</cite> - <span title="Source Title">{{ tweet.user_location if tweet.user_location != '' else 'Ankara, Türkiye' }}</span> {% for i in tweet.hashtags.strip('{').strip('}').split(',') %} <span class="badge rounded-pill bg-warning text-dark">#{{ i }} </span> {% endfor %}
+                {{ tweets[i].publish_date }}
+                <cite title="Source Title"> {{ tweets[i].device }}</cite> - <span title="Source Title">{{ tweets[i].user_location if tweets[i].user_location != '' else 'Ankara, Türkiye' }}</span> {% for i in tweets[i].hashtags.strip('{').strip('}').split(',') %} <span class="badge rounded-pill bg-warning text-dark">#{{ i }} </span> {% endfor %}
               </footer>
             </blockquote>
           </div>
@@ -47,4 +30,11 @@
     </div>
   </div>
 {% endfor %}
-</div> {% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js"></script>
+{% endblock %}

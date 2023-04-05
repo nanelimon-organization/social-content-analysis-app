@@ -4,6 +4,7 @@ from models.twitter import db as models_db
 from views.unsolicited_content_analysis import uns_cont_alys
 from decouple import config
 
+
 app = Flask(__name__)
 
 # Load environment variables

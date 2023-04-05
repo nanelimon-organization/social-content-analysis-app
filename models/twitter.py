@@ -19,5 +19,7 @@ class Tweet(db.Model):
     hashtags = db.Column(db.String(255), nullable=False)
 
     def __repr__(self):
-        return '<Tweet %r>' % self.username
+        return f'<Tweet {self.username}>'
 
+    def __set_name__(self, owner, name):
+        return f'owner: {self.owner} - name: {self.name}'
